@@ -1,14 +1,26 @@
 // import 'package:get/get.dart';
+// class Book {
+//   final String bookimageurl;
+//   final String bookname;
+//   final String bookdescription;
+//   final String bookdownloadurl;
 //
-// class Item {
-//   int bookimageurl;
-//   String name;
-//   double price;
-//   RxBool
-//   inWishList; // Make inWishList observable by using the RxBool type and adding ".obs" (".obs" will be added in the Products class).
-//   Item(
-//       {required this.bookimageurl,
-//         required this.name,
-//         required this.price,
-//         required this.inWishList});
+//   final RxBool inWishList;
+//
+//   Book({
+//     required this.bookimageurl,
+//     required this.bookname,
+//     required this.bookdescription,
+//     required this.bookdownloadurl, //required this.price
+//   }) : inWishList = false.obs;
+//
+//   factory Book.fromJson(Map<String, dynamic> json) {
+//     return Book(
+//       bookimageurl: json['mImageUrls'],
+//       bookname: json['mNames'],
+//       bookdescription: json['mDescription'],
+//       bookdownloadurl: json['mdwnurl'],
+//
+//     );
+//   }
 // }
