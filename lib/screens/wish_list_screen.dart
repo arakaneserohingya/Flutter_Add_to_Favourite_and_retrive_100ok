@@ -27,13 +27,13 @@ class WishListScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final product = _p.wishListItems[index];
                   return ListTile(
-                    title: Text(product.name),
-                    subtitle: Text("\$${product.price.toStringAsFixed(2)}"),
+                    title: Text(product.bookname),
+                   // subtitle: Text("\$${product.price.toStringAsFixed(2)}"),
                     trailing: IconButton(
                       onPressed: () {
-                        _p.removeItem(product.id);
+                        _p.removeItem(product.bookimageurl);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.favorite,
                         color: Colors.red,
                       ),
@@ -73,18 +73,18 @@ class WishListScreen extends StatelessWidget {
 //             itemBuilder: (context, index) {
 //               final item = _p.wishListItems[index];
 //               return Card(
-//                 key: ValueKey(item.id),
+//                 key: ValueKey(item.BookImageUrl),
 //                 margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
 //                 color: Colors.blue[200],
 //                 child: ListTile(
-//                   title: Text(item.name),
+//                   title: Text(item.bookname),
 //                   subtitle: Text(item.price.toStringAsFixed(2)),
 //                   // This button use to remove )the item from wish list
 //                   trailing: IconButton(
 //                     icon: const Icon(Icons.close),
 //                     onPressed: () {
 //                       item.inWishList.value = false;
-//                       _p.removeItem(item.id);
+//                       _p.removeItem(item.BookImageUrl);
 //                     },
 //                   ),
 //                 ),

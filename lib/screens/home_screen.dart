@@ -25,13 +25,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kindacode.com'),
+        title: const Text('Add to Favourite'),
       ),
       body: Column(
         children: [
           const SizedBox(
             height: 20,
           ),
+
+          ///to show favourited  items
           InkWell(
             child: Container(
               width: 300,
@@ -39,36 +41,38 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.red,
               alignment: Alignment.center,
               child: Obx(() => Text(
-                'Wish List: ${_p.wishListItems.length}',
-                style: const TextStyle(fontSize: 28, color: Colors.white),
-              )),
+                    'Wish List: ${_p.wishListItems.length}',
+                    style: const TextStyle(fontSize: 28, color: Colors.white),
+                  )),
             ),
-            onTap: () => Navigator.push(
-                context, MaterialPageRoute(builder: (context) => WishListScreen())),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => WishListScreen())),
           ),
+
           const SizedBox(
             height: 20,
           ),
           Expanded(
             child: Obx(
-                  () => ListView.builder(
+              () => ListView.builder(
                 itemCount: _p.items.length,
                 itemBuilder: (context, index) {
                   final product = _p.items[index];
                   return Card(
-                    key: ValueKey(product.id),
-                    margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    key: ValueKey(product.bookimageurl),
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                     color: Colors.amber.shade300,
                     child: ListTile(
-                      title: Text(product.name),
-                      subtitle: Text("\$${product.price.toStringAsFixed(2)}"),
+                      title: Text(product.bookname),
+                      //subtitle: Text("\$${product.price.toStringAsFixed(2)}"),
                       trailing: Obx(
-                            () => IconButton(
+                        () => IconButton(
                           onPressed: () {
                             if (product.inWishList.value == false) {
-                              _p.addItem(product.id);
+                              _p.addItem(product.bookimageurl);
                             } else {
-                              _p.removeItem(product.id);
+                              _p.removeItem(product.bookimageurl);
                             }
                           },
                           icon: Icon(
@@ -96,25 +100,6 @@ void main() {
     home: HomeScreen(),
   ));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //
 // // screens/home_screen.dart
@@ -171,20 +156,20 @@ void main() {
 //                   itemBuilder: (context, index) {
 //                     final product = _p.items[index];
 //                     return Card(
-//                       key: ValueKey(product.id),
+//                       key: ValueKey(product.BookImageUrl),
 //                       margin: const EdgeInsets.symmetric(
 //                           vertical: 5, horizontal: 10),
 //                       color: Colors.amber.shade300,
 //                       child: ListTile(
-//                         title: Text(product.name),
+//                         title: Text(product.bookname),
 //                         subtitle: Text("\$${product.price.toStringAsFixed(2)}"),
 //                         // Use Obx(()=> to update icon color when product.inWishList change
 //                         trailing: Obx(() => IconButton(
 //                           onPressed: () {
 //                             if (product.inWishList.value == false) {
-//                               _p.addItem(product.id);
+//                               _p.addItem(product.BookImageUrl);
 //                             } else {
-//                               _p.removeItem(product.id);
+//                               _p.removeItem(product.BookImageUrl);
 //                             }
 //                           },
 //                           icon: Icon(

@@ -4,19 +4,20 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class Product {
-  final String id;
-  final String name;
-  final double price;
+  final String bookimageurl;
+  final String bookname;
+  //final double price;
   final RxBool inWishList;
 
-  Product({required this.id, required this.name, required this.price})
+  Product({required this.bookimageurl, required this.bookname, //required this.price
+  })
       : inWishList = false.obs;
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-      id: json['mImageUrls'],
-      name: json['mNames'],
-      price: 0.0, // You can add a price field if it's available in the JSON
+      bookimageurl: json['mImageUrls'],
+      bookname: json['mNames'],
+      //price: 0.0, // You can add a price field if it's available in the JSON
     );
   }
 }
@@ -39,7 +40,7 @@ class Products extends GetxController {
   }
 
   void addItem(String productId) {
-    final product = items.firstWhere((element) => element.id == productId);
+    final product = items.firstWhere((element) => element.bookimageurl == productId);
     if (!wishListItems.contains(product)) {
       wishListItems.add(product);
       product.inWishList.value = true;
@@ -47,7 +48,7 @@ class Products extends GetxController {
   }
 
   void removeItem(String productId) {
-    final product = items.firstWhere((element) => element.id == productId);
+    final product = items.firstWhere((element) => element.bookimageurl == productId);
     if (wishListItems.contains(product)) {
       wishListItems.remove(product);
       product.inWishList.value = false;
@@ -71,8 +72,8 @@ class Products extends GetxController {
 //   final RxList<Item> _items = List.generate(
 //       100,
 //           (index) => Item(
-//           id: index,
-//           name: 'Product $index',
+//           bookimageurl: index,
+//           bookname: 'Product $index',
 //           price: Random().nextDouble() * 100,
 //           inWishList: false.obs)).obs;
 //
@@ -87,14 +88,14 @@ class Products extends GetxController {
 //   }
 //
 //   // Add an item to the wish list
-//   void addItem(int id) {
-//     final int index = _items.indexWhere((item) => item.id == id);
+//   void addItem(int bookimageurl) {
+//     final int index = _items.indexWhere((item) => item.bookimageurl == bookimageurl);
 //     _items[index].inWishList.value = true;
 //   }
 //
 //   // Remove an item from the wish list
-//   void removeItem(int id) {
-//     final int index = _items.indexWhere((item) => item.id == id);
+//   void removeItem(int bookimageurl) {
+//     final int index = _items.indexWhere((item) => item.bookimageurl == bookimageurl);
 //     _items[index].inWishList.value = false;
 //   }
 // }
